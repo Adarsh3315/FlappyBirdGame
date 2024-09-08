@@ -25,31 +25,15 @@
     }
 
     @-webkit-keyframes gradient {
-      0% {
-        background-position: 0% 50%;
-      }
-
-      50% {
-        background-position: 100% 50%;
-      }
-
-      100% {
-        background-position: 0% 50%;
-      }
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
     @keyframes gradient {
-      0% {
-        background-position: 0% 50%;
-      }
-
-      50% {
-        background-position: 100% 50%;
-      }
-
-      100% {
-        background-position: 0% 50%;
-      }
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
     }
 
     /* Navbar Styling */
@@ -104,17 +88,17 @@
       transform: scale(1.05);
     }
 
-    /* Image Styling - Removed Border */
+    /* Image Styling - No Border */
     img {
       max-width: 100%;
       height: auto;
       transition: transform 0.4s, box-shadow 0.4s;
-      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      border: none;  /* Removes the border */
+      box-shadow: none; /* Ensures no shadow is applied */
     }
 
     img:hover {
       transform: scale(1.1);
-      box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
     }
 
     .content {
@@ -145,11 +129,9 @@
 
     /* Floating Effect for the Button */
     @keyframes float {
-      0%,
-      100% {
+      0%, 100% {
         transform: translateY(0);
       }
-
       50% {
         transform: translateY(-10px);
       }
