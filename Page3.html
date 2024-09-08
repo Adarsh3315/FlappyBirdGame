@@ -2,129 +2,140 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <title>Contact Page</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+    <meta charset="UTF-8">
+    <title>Contact Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
 
-    body {
-      background: linear-gradient(-45deg, #ff6f61, #f06292, #ffd54f, #4db6ac, #9575cd, #ff8a65, #ffcc80, #dce775, #a5d6a7, #f8bbd0);
-      background-size: 400% 400%;
-      animation: gradientBG 20s ease infinite;
-      font-family: 'Arial', sans-serif;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      text-align: center;
-    }
+        body {
+            background: linear-gradient(-45deg, #ff6f61, #f06292, #ffd54f, #4db6ac, #9575cd, #ff8a65, #ffcc80, #dce775, #a5d6a7, #f8bbd0);
+            background-size: 400% 400%;
+            animation: gradientBG 20s ease infinite;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+        }
 
-    @keyframes gradientBG {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
+        @keyframes gradientBG {
+            0% {
+                background-position: 0% 50%;
+            }
 
-    .container {
-      max-width: 800px;
-      margin: 20px;
-      background: rgba(255, 255, 255, 0.9);
-      border-radius: 15px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-      overflow: hidden;
-      padding: 20px;
-      transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-    }
+            50% {
+                background-position: 100% 50%;
+            }
 
-    .container:hover {
-      transform: scale(1.02);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
-    }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
 
-    .header {
-      background-color: #1976d2;
-      color: white;
-      padding: 20px;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-      font-size: 2.5rem;
-      border-radius: 10px 10px 0 0;
-    }
+        .container {
+            max-width: 800px;
+            margin: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            padding: 20px;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
 
-    .main .info {
-      padding: 20px;
-      text-align: left;
-    }
+        .container:hover {
+            transform: scale(1.02);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+        }
 
-    .main .info h2 {
-      font-size: 2rem;
-      color: #1976d2;
-      text-decoration: underline;
-      margin-bottom: 15px;
-    }
+        .header {
+            background-color: #1976d2;
+            color: white;
+            padding: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            font-size: 2.5rem;
+            border-radius: 10px 10px 0 0;
+        }
 
-    .main .info p {
-      color: #d32f2f;
-      font-size: 1.2rem;
-    }
+        .main .info {
+            padding: 20px;
+            text-align: left;
+        }
 
-    .main .info ul {
-      list-style: none;
-      padding-left: 0;
-      color: #333;
-    }
+        .main .info h2 {
+            font-size: 2rem;
+            color: #1976d2;
+            text-decoration: underline;
+            margin-bottom: 15px;
+        }
 
-    .main .info li {
-      margin-bottom: 15px;
-      font-size: 1.2rem;
-    }
+        .main .info p {
+            color: #d32f2f;
+            font-size: 1.2rem;
+        }
 
-    .main .info li b {
-      color: #1976d2;
-    }
+        .main .info ul {
+            list-style: none;
+            padding-left: 0;
+            color: #333;
+        }
 
-    .footer {
-      background-color: #000;
-      color: #fff;
-      padding: 15px;
-      text-align: center;
-      font-size: 1rem;
-      border-radius: 0 0 10px 10px;
-    }
+        .main .info li {
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
 
-    @media (min-width: 768px) {
-      .main .info {
-        width: 100%;
-      }
-    }
-  </style>
+        .main .info li b {
+            color: #1976d2;
+        }
+
+        .footer {
+            background: transparent;
+            /* Removed the black background */
+            color: #000;
+            /* Set text color to black */
+            padding: 15px;
+            text-align: center;
+            font-size: 1rem;
+            border-radius: 0 0 10px 10px;
+        }
+
+        @media (min-width: 768px) {
+            .main .info {
+                width: 100%;
+            }
+        }
+    </style>
 </head>
 
 <body>
-  <div class="container">
-    <div class="header">
-      <h1>Contact Us</h1>
-    </div>
+    <div class="container">
+        <div class="header">
+            <h1>Contact Us</h1>
+        </div>
 
-    <div class="main">
-      <div class="info">
-        <h2><b><u>Contact Information:</u></b></h2>
-        <p><b>If you have any questions, comments, or feedback, please feel free to reach out to us using the contact details below:</b></p>
-        <ul>
-          <li><b>Address:</b> Ranip, Ahmedabad, Gujarat, India</li>
-          <li><b>Email:</b> pandeyadarsh3115@gmail.com</li>
-        </ul>
-      </div>
-    </div>
+        <div class="main">
+            <div class="info">
+                <h2><b><u>Contact Information:</u></b></h2>
+                <p><b>If you have any questions, comments, or feedback, please feel free to reach out to us using the
+                        contact details below:</b></p>
+                <ul>
+                    <li><b>Address:</b> Ranip, Ahmedabad, Gujarat, India</li>
+                    <li><b>Email:</b> pandeyadarsh3115@gmail.com</li>
+                </ul>
+            </div>
+        </div>
 
-    <div class="footer">
-      <p>©2023 TechVision. All rights reserved.</p>
+        <div class="footer">
+            <p>©2023 TechVision. All rights reserved.</p>
+        </div>
     </div>
-  </div>
 </body>
 
 </html>
