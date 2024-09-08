@@ -2,268 +2,293 @@
 <html lang="en" dir="ltr">
 
 <head>
-  <meta charset="utf-8">
-  <title>Login Page</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      border-radius: 5px;
-      box-sizing: border-box;
-    }
+    <meta charset="utf-8">
+    <title>Login Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" />
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            border-radius: 5px;
+            box-sizing: border-box;
+        }
 
-    body {
-      height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-family: 'Montserrat', sans-serif;
-      background: url(https://media.istockphoto.com/id/1407368087/photo/sunrise-orange-blue-sky-gradient-clear-sky-without-clouds-beautiful-red-and-light-blue-sky.webp?s=170667a&w=0&k=20&c=tfmAIpk-Ai1W1tpNL8SXWPP2q-F36mbZ2Xbir3ghfPU=) no-repeat center;
-      background-size: cover;
-    }
+        body {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Montserrat', sans-serif;
+            background: url(https://media.istockphoto.com/id/1407368087/photo/sunrise-orange-blue-sky-gradient-clear-sky-without-clouds-beautiful-red-and-light-blue-sky.webp?s=170667a&w=0&k=20&c=tfmAIpk-Ai1W1tpNL8SXWPP2q-F36mbZ2Xbir3ghfPU=) no-repeat center;
+            background-size: cover;
+            flex-direction: column;
+        }
 
-    .container {
-      position: relative;
-      width: 400px;
-      background: rgba(255, 255, 255, 0.9);
-      padding: 50px;
-      border-radius: 15px;
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
-      text-align: center;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
+        .container {
+            position: relative;
+            width: 400px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 50px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
 
-    .container:hover {
-      transform: scale(1.05);
-      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
-    }
+        .container:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+        }
 
-    header {
-      font-size: 2.5rem;
-      font-weight: bold;
-      color: #e74c3c;
-      margin-bottom: 30px;
-      font-family: 'Cursive';
-    }
+        header {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #e74c3c;
+            margin-bottom: 30px;
+            font-family: 'Cursive';
+        }
 
-    .input-field {
-      margin: 20px 0;
-      position: relative;
-    }
+        .input-field {
+            margin: 20px 0;
+            position: relative;
+        }
 
-    .input-field input {
-      width: 100%;
-      padding: 15px;
-      border: 1px solid #ccc;
-      outline: none;
-      font-size: 18px;
-      transition: border-color 0.4s ease;
-    }
+        .input-field input {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ccc;
+            outline: none;
+            font-size: 18px;
+            transition: border-color 0.4s ease;
+        }
 
-    .input-field input:focus {
-      border-color: #1DA1F2;
-    }
+        .input-field input:focus {
+            border-color: #1DA1F2;
+        }
 
-    .input-field span.show {
-      position: absolute;
-      right: 10px;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 0.9rem;
-      color: #3498db;
-      cursor: pointer;
-      visibility: hidden;
-    }
+        .input-field span.show {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 0.9rem;
+            color: #3498db;
+            cursor: pointer;
+            visibility: hidden;
+        }
 
-    .input-field input:valid~span.show {
-      visibility: visible;
-    }
+        .input-field input:valid~span.show {
+            visibility: visible;
+        }
 
-    .button {
-      position: relative;
-      overflow: hidden;
-      height: 50px;
-      margin-top: 30px;
-    }
+        .button {
+            position: relative;
+            overflow: hidden;
+            height: 50px;
+            margin-top: 30px;
+        }
 
-    .button .inner {
-      position: absolute;
-      left: -100%;
-      height: 100%;
-      width: 300%;
-      background: linear-gradient(to right, #00dbde, #fc00ff, #00dbde, #fc00ff);
-      transition: left 0.4s;
-    }
+        .button .inner {
+            position: absolute;
+            left: -100%;
+            height: 100%;
+            width: 300%;
+            background: linear-gradient(to right, #00dbde, #fc00ff, #00dbde, #fc00ff);
+            transition: left 0.4s;
+        }
 
-    .button:hover .inner {
-      left: 0;
-    }
+        .button:hover .inner {
+            left: 0;
+        }
 
-    .button button {
-      width: 100%;
-      height: 100%;
-      background: none;
-      border: none;
-      color: white;
-      font-size: 18px;
-      font-weight: bold;
-      cursor: pointer;
-      z-index: 1;
-      position: relative;
-    }
+        .button button {
+            width: 100%;
+            height: 100%;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            z-index: 1;
+            position: relative;
+        }
 
-    .auth {
-      margin: 25px 0;
-      font-size: 1.2rem;
-      color: limegreen;
-      font-family: 'Cursive';
-    }
+        .auth {
+            margin: 25px 0;
+            font-size: 1.2rem;
+            color: limegreen;
+            font-family: 'Cursive';
+        }
 
-    .links {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-    }
+        .links {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
 
-    .facebook,
-    .google {
-      padding: 10px;
-      cursor: pointer;
-      border-radius: 5px;
-      transition: background-color 0.4s, color 0.4s;
-    }
+        .facebook,
+        .google {
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background-color 0.4s, color 0.4s;
+        }
 
-    .facebook {
-      border: 1px solid #3b5998;
-    }
+        .facebook {
+            border: 1px solid #3b5998;
+        }
 
-    .google {
-      border: 1px solid #db4437;
-    }
+        .google {
+            border: 1px solid #db4437;
+        }
 
-    .facebook:hover {
-      background-color: #3b5998;
-      color: white;
-    }
+        .facebook:hover {
+            background-color: #3b5998;
+            color: white;
+        }
 
-    .google:hover {
-      background-color: #db4437;
-      color: white;
-    }
+        .google:hover {
+            background-color: #db4437;
+            color: white;
+        }
 
-    .signup {
-      margin-top: 25px;
-      font-size: 1rem;
-    }
+        .signup {
+            margin-top: 25px;
+            font-size: 1rem;
+        }
 
-    .signup a {
-      color: #3498db;
-      text-decoration: none;
-    }
+        .signup a {
+            color: #3498db;
+            text-decoration: none;
+        }
 
-    .signup a:hover {
-      text-decoration: underline;
-    }
+        .signup a:hover {
+            text-decoration: underline;
+        }
 
-    @media (max-width: 768px) {
-      .container {
-        width: 80%;
-        padding: 40px 20px;
-      }
+        footer {
+            width: 100%;
+            text-align: center;
+            padding: 10px 0;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
 
-      header {
-        font-size: 2rem;
-      }
+        footer p {
+            margin: 0;
+            font-size: 0.9rem;
+        }
 
-      .input-field input {
-        font-size: 16px;
-      }
+        footer p span {
+            font-weight: bold;
+        }
 
-      .button button {
-        font-size: 16px;
-      }
-    }
+        @media (max-width: 768px) {
+            .container {
+                width: 80%;
+                padding: 40px 20px;
+            }
 
-    @media (max-width: 480px) {
-      .container {
-        width: 90%;
-        padding: 30px 15px;
-      }
+            header {
+                font-size: 2rem;
+            }
 
-      header {
-        font-size: 1.8rem;
-      }
+            .input-field input {
+                font-size: 16px;
+            }
 
-      .input-field input {
-        font-size: 14px;
-      }
+            .button button {
+                font-size: 16px;
+            }
+        }
 
-      .button button {
-        font-size: 14px;
-      }
-    }
-  </style>
+        @media (max-width: 480px) {
+            .container {
+                width: 90%;
+                padding: 30px 15px;
+            }
+
+            header {
+                font-size: 1.8rem;
+            }
+
+            .input-field input {
+                font-size: 14px;
+            }
+
+            .button button {
+                font-size: 14px;
+            }
+        }
+    </style>
 </head>
 
 <body>
-  <div class="container">
-    <header>Welcome Back</header>
-    <form id="loginForm">
-      <div class="input-field">
-        <input type="text" required placeholder="Email Id" id="email">
-      </div>
-      <div class="input-field">
-        <input class="pswrd" type="password" required placeholder="Password" id="password">
-        <span class="show">Show</span>
-      </div>
-      <div class="button">
-        <div class="inner"></div>
-        <button type="button">Continue</button>
-      </div>
-    </form>
-    <div class="auth">Login With</div>
-    <div class="links">
-      <div class="facebook">
-        <i class="fab fa-facebook-square"></i> Facebook
-      </div>
-      <div class="google">
-        <i class="fab fa-google-plus-square"></i> Google
-      </div>
+    <div class="container">
+        <header>Welcome Back</header>
+        <form id="loginForm">
+            <div class="input-field">
+                <input type="text" required placeholder="Email Id" id="email">
+            </div>
+            <div class="input-field">
+                <input class="pswrd" type="password" required placeholder="Password" id="password">
+                <span class="show">Show</span>
+            </div>
+            <div class="button">
+                <div class="inner"></div>
+                <button type="button">Continue</button>
+            </div>
+        </form>
+        <div class="auth">Login With</div>
+        <div class="links">
+            <div class="facebook">
+                <i class="fab fa-facebook-square"></i> Facebook
+            </div>
+            <div class="google">
+                <i class="fab fa-google-plus-square"></i> Google
+            </div>
+        </div>
+        <div class="signup">
+            Not A Member? <a href="#">Signup Now</a>
+        </div>
     </div>
-    <div class="signup">
-      Not A Member? <a href="#">Signup Now</a>
-    </div>
-  </div>
 
-  <script>
-    var input = document.querySelector('.pswrd');
-    var show = document.querySelector('.show');
-    show.addEventListener('click', function () {
-      if (input.type === "password") {
-        input.type = "text";
-        show.textContent = "Hide";
-      } else {
-        input.type = "password";
-        show.textContent = "Show";
-      }
-    });
+    <footer>
+        <p>© 2024 Techvision | Made with ❤️ by Adarsh Pandey<span>Your Name</span></p>
+    </footer>
 
-    var loginButton = document.querySelector('.button button');
-    var emailInput = document.getElementById('email');
-    var passwordInput = document.getElementById('password');
+    <script>
+        var input = document.querySelector('.pswrd');
+        var show = document.querySelector('.show');
+        show.addEventListener('click', function () {
+            if (input.type === "password") {
+                input.type = "text";
+                show.textContent = "Hide";
+            } else {
+                input.type = "password";
+                show.textContent = "Show";
+            }
+        });
 
-    loginButton.addEventListener('click', function () {
-      var enteredEmail = emailInput.value;
-      var enteredPassword = passwordInput.value;
+        var loginButton = document.querySelector('.button button');
+        var emailInput = document.getElementById('email');
+        var passwordInput = document.getElementById('password');
 
-      if (enteredEmail === 'pandeyadarsh3115@gmail.com' && enteredPassword === 'admin@123') {
-        window.location.href = 'Page1.html';
-      } else {
-        alert('Incorrect Email Or Password');
-      }
-    });
-  </script>
+        loginButton.addEventListener('click', function () {
+            var enteredEmail = emailInput.value;
+            var enteredPassword = passwordInput.value;
+
+            if (enteredEmail === 'pandeyadarsh3115@gmail.com' && enteredPassword === 'admin@123') {
+                window.location.href = 'Page1.html';
+            } else {
+                alert('Incorrect Email Or Password');
+            }
+        });
+    </script>
 </body>
 
 </html>
