@@ -2,162 +2,177 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <title>About Page</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <style>
-    * {
-      box-sizing: border-box;
-    }
+    <meta charset="UTF-8">
+    <title>About Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
 
-    body {
-      background: linear-gradient(-45deg, #ff6f61, #f06292, #ffd54f, #4db6ac, #9575cd, #ff8a65, #ffcc80, #dce775, #a5d6a7, #f8bbd0);
-      background-size: 400% 400%;
-      animation: gradientBG 20s ease infinite;
-      font-family: 'Arial', sans-serif;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      min-height: 100vh;
-      text-align: center;
-    }
+        body {
+            background: linear-gradient(-45deg, #ff6f61, #f06292, #ffd54f, #4db6ac, #9575cd, #ff8a65, #ffcc80, #dce775, #a5d6a7, #f8bbd0);
+            background-size: 400% 400%;
+            animation: gradientBG 20s ease infinite;
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+        }
 
-    @keyframes gradientBG {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
+        @keyframes gradientBG {
+            0% {
+                background-position: 0% 50%;
+            }
 
-    .container {
-      max-width: 1000px;
-      margin: 20px auto;
-      background: rgba(255, 255, 255, 0.9);
-      border-radius: 15px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-      overflow: hidden;
-      padding: 20px;
-      transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
-    }
+            50% {
+                background-position: 100% 50%;
+            }
 
-    .container:hover {
-      transform: scale(1.02);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
-    }
+            100% {
+                background-position: 0% 50%;
+            }
+        }
 
-    .header {
-      background-color: #d32f2f;
-      color: white;
-      padding: 15px;
-      text-align: center;
-      font-size: 2.5rem;
-      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-      border-radius: 10px 10px 0 0;
-    }
+        .container {
+            max-width: 1000px;
+            margin: 20px auto;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            overflow: hidden;
+            padding: 20px;
+            transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+        }
 
-    .navbar a:hover {
-      background-color: #ff6f00;
-      color: #fff;
-      transition: background-color 0.3s ease;
-    }
+        .container:hover {
+            transform: scale(1.02);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+        }
 
-    .main {
-      display: flex;
-      flex-direction: column;
-      padding: 20px;
-    }
+        .header {
+            background-color: #ff0000;
+            color: white;
+            padding: 15px;
+            text-align: center;
+            font-size: 2.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            border-radius: 10px 10px 0 0;
+        }
 
-    .profile {
-      width: 100%;
-      margin-bottom: 20px;
-    }
+        .navbar a:hover {
+            background-color: #ff6f00;
+            color: #fff;
+            transition: background-color 0.3s ease;
+        }
 
-    .profile img {
-      width: 100%;
-      border-radius: 15px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-      transition: transform 0.3s ease;
-    }
+        .main {
+            display: flex;
+            flex-direction: column;
+            padding: 20px;
+        }
 
-    .profile img:hover {
-      transform: scale(1.05);
-    }
+        .profile {
+            width: 100%;
+            margin-bottom: 20px;
+        }
 
-    .content {
-      padding: 10px;
-      color: #333;
-    }
+        .profile img {
+            width: 100%;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease;
+        }
 
-    .content h2 {
-      color: #d32f2f;
-      font-size: 2rem;
-      text-transform: uppercase;
-      text-decoration: underline;
-      margin-bottom: 15px;
-    }
+        .profile img:hover {
+            transform: scale(1.05);
+        }
 
-    .content p {
-      color: #1976d2;
-      font-size: 1.2rem;
-      line-height: 1.6;
-    }
+        .content {
+            padding: 10px;
+            color: #333;
+        }
 
-    .footer {
-      background-color: #000;
-      color: #fff;
-      padding: 10px;
-      text-align: center;
-      font-size: 1rem;
-      border-radius: 0 0 10px 10px;
-    }
+        .content h2 {
+            color: #ff0000;
+            font-size: 2rem;
+            text-transform: uppercase;
+            text-decoration: underline;
+            margin-bottom: 15px;
+        }
 
-    @media (min-width: 768px) {
-      .main {
-        flex-direction: row;
-      }
+        .content p {
+            color: #1976d2;
+            font-size: 1.2rem;
+            line-height: 1.6;
+        }
 
-      .profile {
-        width: 40%;
-        margin-bottom: 0;
-      }
+        .footer {
+            background-color: #000;
+            color: #fff;
+            padding: 10px;
+            text-align: center;
+            font-size: 1rem;
+            border-radius: 0 0 10px 10px;
+        }
 
-      .content {
-        width: 60%;
-      }
-    }
-  </style>
+        @media (min-width: 768px) {
+            .main {
+                flex-direction: row;
+            }
+
+            .profile {
+                width: 40%;
+                margin-bottom: 0;
+            }
+
+            .content {
+                width: 60%;
+            }
+        }
+    </style>
 </head>
 
 <body>
-  <div class="container">
-    <div class="header">
-      <h1><b>TechVision Studio</b></h1>
-    </div>
+    <div class="container">
+        <div class="header">
+            <h1><b>TechVision Studio</b></h1>
+        </div>
 
-    <div class="main">
-      <div class="profile">
-        <img src="p2p.jpg" alt="Profile Image">
-      </div>
+        <div class="main">
+            <div class="profile">
+                <img src="p2p.jpg" alt="Profile Image">
+            </div>
 
-      <div class="content">
-        <h2><b><u>About Us</u></b></h2>
-        <p><b>TechVision Studio is a game development studio dedicated to creating innovative and entertaining
-            experiences for players around the world. Our team is composed of creative and passionate professionals who
-            have the skill and experience necessary to deliver top-notch gaming experiences. We design and develop games
-            for mobile, PC, and console platforms, and strive to create unique and engaging experiences that appeal to
-            the widest possible audience. We are always looking for new ideas and approaches to game development, and
-            are committed to creating games that push the boundaries of innovation and creativity. We are passionate
-            about delivering high-quality experiences that players will love and enjoy. Our goal is to make sure that
-            our players remain entertained and challenged while playing our games. We strive to provide a unique gaming
-            experience with every new release, and always strive to exceed customer expectations.</b></p>
-      </div>
-    </div>
+            <div class="content">
+                <h2><b><u>About Us</u></b></h2>
+                <p><b>TechVision Studio is a game development studio dedicated to creating innovative and entertaining
+                        experiences for players around the world. Our team is composed of creative and passionate
+                        professionals who
+                        have the skill and experience necessary to deliver top-notch gaming experiences. We design and
+                        develop games
+                        for mobile, PC, and console platforms, and strive to create unique and engaging experiences that
+                        appeal to
+                        the widest possible audience. We are always looking for new ideas and approaches to game
+                        development, and
+                        are committed to creating games that push the boundaries of innovation and creativity. We are
+                        passionate
+                        about delivering high-quality experiences that players will love and enjoy. Our goal is to make
+                        sure that
+                        our players remain entertained and challenged while playing our games. We strive to provide a
+                        unique gaming
+                        experience with every new release, and always strive to exceed customer expectations.</b></p>
+            </div>
+        </div>
 
-    <div class="footer">
-      <p>©2023 TechVision. All rights reserved.</p>
+        <div class="footer">
+            <p>©2023 TechVision. All rights reserved.</p>
+        </div>
     </div>
-  </div>
 </body>
 
 </html>
