@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Game Page</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      background: linear-gradient(-45deg, #ff6f61, #e57373, #ffd54f, #4db6ac, #9575cd, #ff8a65, #ffcc80, #dce775, #a5d6a7, #f8bbd0);
+      background-size: 400% 400%;
+      -webkit-animation: gradientBG 20s ease infinite;
+      animation: gradientBG 20s ease infinite;
+      font-family: 'Arial', sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+    }
+
+    @-webkit-keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    h3 {
+      font-size: 2.5rem;
+      font-weight: bold;
+      margin-bottom: 20px;
+      color: #ff5722;
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+    }
+
+    .random {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Canvas Styling */
+    canvas {
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+      background: #ffffff;
+      transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    }
+
+    canvas:hover {
+      transform: scale(1.05);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      body {
+        padding: 20px;
+      }
+
+      canvas {
+        width: 90%;
+        height: auto;
+      }
+
+      h3 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="random">
+    <canvas id="canvas" width="353" height="605"></canvas>
+  </div>
+
+  <script>
+    "use strict";
+
+    const cvs = document.getElementById("canvas");
+    const ctx = cvs.getContext("2d");
+
+    const GAP_SIZE = 105;
+    const INITIAL_BIRD_X = 10;
+    const INITIAL_BIRD_Y = 150;
+    const GRAVITY = 1.2;
+    const BIRD_JUMP = -35;
+    const NEW_PIPE_X = 125;
+    const SCORE_PIPE_X = 5;
+
+    const STATE = {
+      GAME: 1,
+      GAME_OVER: 2,
+    };
+
+    let birdY = INITIAL_BIRD_Y;
+    let currentState = STATE.GAME;
+    let score = 0;
+    let touchStartY = 0;
+
+    const birdImg = loadImage("p4p1.png");
+    const bgImg = loadImage("p4p2.png");
+    const fgImg = loadImage("p4p3.png");
+    const pipeNorthImg = loadImage("p4p4.png");
+    const pipeSouthImg = loadImage("p4p5.png");
+    const jumpSound = loadAudio("p4s1.mp3");
+    const scoreSound = loadAudio("p4s2.mp3");
+    const gameOverSound = loadAudio("p4s3.mp3");
+
+    function handleTouchEnd(event) {
+      if (currentState === STATE.GAME_OVER) {
+        startGame();
+        window.location.href = "Page4.html";
+      }
+    }
+
+    function moveUp() {
+      birdY += BIRD_JUMP;
+      jumpSound.play();
+    }
+
+    const pipes = [{
+      x: cvs.width,
+      y: 0,
+    }];
+
+    function startGame() {
+      pipes.length = 0;
+      score = 0;
+      birdY = INITIAL_BIRD_Y;
+      currentState = STATE.GAME;
+      pipes.push({
+        x: cvs.width,
+        y: Math.floor(Math.random() * pipeNorthImg.height) - pipeNorthImg.height,
+      });
+      draw();
+    }
+
+    function draw() {
+      ctx.drawImage(bgImg, 0, 0);
+
+      for (let i = 0; i < pipes.length; i++) {
+        let constant = pipeNorthImg.height + GAP_SIZE;
+
+        ctx.drawImage(pipeNorthImg, pipes[i].x, pipes[i].y);
+        ctx.drawImage(pipeSouthImg, pipes[i].x, pipes[i].y + constant);
+
+        pipes[i].x--;
+
+        if (pipes[i].x === NEW_PIPE_X) {
+          pipes.push({
+            x: cvs.width,
+            y: Math.floor(Math.random() * pipeNorthImg.height) - pipeNorthImg.height,
+          });
+        }
+
+        if (
+          (INITIAL_BIRD_X + birdImg.width >= pipes[i].x &&
+            INITIAL_BIRD_X <= pipes[i].x + pipeNorthImg.width &&
+            (birdY <= pipes[i].y + pipeNorthImg.height ||
+              birdY + birdImg.height >= pipes[i].y + constant)) ||
+          birdY + birdImg.height >= cvs.height - fgImg.height
+        ) {
+          currentState = STATE.GAME_OVER;
+          gameOverSound.play();
+        }
+
+        if (pipes[i].x === SCORE_PIPE_X) {
+          score++;
+          scoreSound.play();
+        }
+      }
+
+      ctx.drawImage(fgImg, 0, cvs.height - fgImg.height);
+      ctx.drawImage(birdImg, INITIAL_BIRD_X, birdY);
+
+      birdY += GRAVITY;
+
+      ctx.fillStyle = "#ff0000";
+      ctx.font = "28px cursive";
+
+      switch (currentState) {
+        case STATE.GAME:
+          ctx.fillText("Score: " + score, 10, cvs.height - 20);
+          requestAnimationFrame(draw);
+          break;
+        case STATE.GAME_OVER:
+          ctx.fillText("Game Over", 100, cvs.height - 50);
+          ctx.fillText("Score: " + score, 115, cvs.height - 10);
+          break;
+      }
+    }
+
+    document.addEventListener("keydown", function (event) {
+      if (event.keyCode === 32 && currentState === STATE.GAME) {
+        moveUp();
+      } else if (event.keyCode === 32 && currentState === STATE.GAME_OVER) {
+        startGame();
+        window.location.href = "Page4.html";
+      }
+    });
+
+    function loadImage(src) {
+      const img = new Image();
+      img.src = src;
+      img.onerror = function () {
+        console.error(`Failed to load image: ${src}`);
+      };
+      return img;
+    }
+
+    function loadAudio(src) {
+      const audio = new Audio();
+      audio.src = src;
+      audio.onerror = function () {
+        console.error(`Failed to load audio: ${src}`);
+      };
+      return audio;
+    }
+
+    cvs.addEventListener("click", function () {
+      if (currentState === STATE.GAME) {
+        moveUp();
+      } else if (currentState === STATE.GAME_OVER) {
+        startGame();
+        window.location.href = "Page4.html";
+      }
+    });
+
+    startGame();
+  </script>
+</body>
+
+</html>
